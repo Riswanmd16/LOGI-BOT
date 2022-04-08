@@ -26,6 +26,7 @@ async def carbon_func(_, message):
 
 MEMEK = "https://te.legra.ph/file/e8595050c5c4ea14f34d9.jpg"
 
+
 @pbot.on_message(filters.command("repo"))
 async def repo(_, message):
     await message.reply_photo(
@@ -43,11 +44,9 @@ async def repo(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
-                        "Repo", url="https://logi-bots.netlify.app/"), 
-                    InlineKeyboardButton(
-                        "Support", url="https://t.me/LOGI_CHANNEL")
+                    InlineKeyboardButton("Repo", url="https://logi-bots.netlify.app/"),
+                    InlineKeyboardButton("Support", url="https://t.me/LOGI_CHANNEL"),
                 ]
             ]
-        )
+        ),
     )

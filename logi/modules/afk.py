@@ -1,4 +1,3 @@
-
 import random, html
 
 from logi import dispatcher

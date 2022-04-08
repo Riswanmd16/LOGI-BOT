@@ -15,7 +15,7 @@ TRUTH = (
     "When’s the last time you lied to your parents and why?",
     "Have you ever lied about your age to participate in a contest?",
     "Have you ever been caught checking someone out?",
-    "[YOUR HERO](@CL_ME_logesh)"
+    "[YOUR HERO](@CL_ME_logesh)",
 )
 
 DARE = (

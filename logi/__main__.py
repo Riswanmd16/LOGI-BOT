@@ -84,7 +84,9 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-PM_START_TEXT = f"[❤]({ START_IMG})""""
+PM_START_TEXT = (
+    f"[❤]({ START_IMG})"
+    """
 *Hᴇʟʟᴏ {} !* 
 ───────────────────────
 × *I'ᴍ  Gʀᴏᴜᴘ Mᴀɴᴀɢᴇᴍᴇɴᴛ Bᴏᴛ*
@@ -100,30 +102,35 @@ PM_START_TEXT = f"[❤]({ START_IMG})""""
 × *Pᴏᴡᴇʀᴇᴅ Bʏ: ꧁☆𝑳𝑶𝑮𝑰━━━☆!*
 ───────────────────────
 """
+)
 
 
 buttons = [
     [
-        InlineKeyboardButton(text="꧁۝༒𝐓𝐫𝐲 𝐈𝐧𝐥𝐢𝐧𝐞꧂", switch_inline_query_current_chat=""),
+        InlineKeyboardButton(
+            text="꧁۝༒𝐓𝐫𝐲 𝐈𝐧𝐥𝐢𝐧𝐞꧂", switch_inline_query_current_chat=""
+        ),
     ],
     [
         InlineKeyboardButton(text="꧁۝༒𝙈𝙖𝙣𝙖𝙜𝙚𝙧 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨꧂", callback_data="help_back"),
-        InlineKeyboardButton(text="꧁۝༒𝙈𝙪𝙨𝙞𝙘 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨 ꧂",url=f"https://telegra.ph/MUSIC-COMMANDS-04-06"),
+        InlineKeyboardButton(
+            text="꧁۝༒𝙈𝙪𝙨𝙞𝙘 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨 ꧂", url=f"https://telegra.ph/MUSIC-COMMANDS-04-06"
+        ),
     ],
     [
         InlineKeyboardButton(text="꧁۝༒𝑰𝒏𝒇𝒐꧂", callback_data="emiko_"),
-        InlineKeyboardButton(text="꧁۝༒𝑶𝒘𝒏𝒆𝒓",  url=f"http://t.me/{OWNER_USERNAME}"),
+        InlineKeyboardButton(text="꧁۝༒𝑶𝒘𝒏𝒆𝒓", url=f"http://t.me/{OWNER_USERNAME}"),
     ],
-   [
+    [
         InlineKeyboardButton(text="꧁۝༒𝑼𝒑𝒅𝒂𝒕𝒆𝒔꧂", url=f"http://t.me/{SUPPORT_CHANNEL}"),
         InlineKeyboardButton(text="꧁۝༒𝑺𝒖𝒑𝒑𝒐𝒓𝒕꧂", url=f"https://t.me/{SUPPORT_CHAT}"),
     ],
-    [  
-        InlineKeyboardButton(text="⚚𝑨𝒅𝒅 𝑴𝒆 𝑻𝒐 𝒀𝒐𝒖𝒓 𝑮𝒓𝒐𝒖𝒑✔️", url=f"t.me/{bu}?startgroup=new"),
-    ], 
-    
+    [
+        InlineKeyboardButton(
+            text="⚚𝑨𝒅𝒅 𝑴𝒆 𝑻𝒐 𝒀𝒐𝒖𝒓 𝑮𝒓𝒐𝒖𝒑✔️", url=f"t.me/{bu}?startgroup=new"
+        ),
+    ],
 ]
-
 
 
 HELP_STRINGS = """
@@ -216,7 +223,13 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    text="Go Back", callback_data="help_back"
+                                )
+                            ]
+                        ]
                     ),
                 )
 
@@ -239,7 +252,8 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),                        
+                    sql.num_chats(),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -248,8 +262,8 @@ def start(update: Update, context: CallbackContext):
     else:
         update.effective_message.reply_text(
             f"👋 Hi, I'm {dispatcher.bot.first_name}. Nice to meet You.",
-            parse_mode=ParseMode.HTML
-       )
+            parse_mode=ParseMode.HTML,
+        )
 
 
 def error_handler(update, context):
@@ -391,20 +405,32 @@ def emiko_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="✨ᴀᴅᴍɪɴs✨", callback_data="emiko_admin"),
-                    InlineKeyboardButton(text="✨ɴᴏᴛᴇs✨", callback_data="emiko_notes"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="✨sᴜᴘᴘᴏʀᴛ✨", callback_data="emiko_support"),
-                    InlineKeyboardButton(text="✨ᴄʀᴇᴅɪᴛs✨", callback_data="emiko_credit"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="✨sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ✨", url="https://logi-bots.netlify.app/"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="🎭ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_back"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="✨ᴀᴅᴍɪɴs✨", callback_data="emiko_admin"
+                        ),
+                        InlineKeyboardButton(
+                            text="✨ɴᴏᴛᴇs✨", callback_data="emiko_notes"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="✨sᴜᴘᴘᴏʀᴛ✨", callback_data="emiko_support"
+                        ),
+                        InlineKeyboardButton(
+                            text="✨ᴄʀᴇᴅɪᴛs✨", callback_data="emiko_credit"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="✨sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ✨", url="https://logi-bots.netlify.app/"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="🎭ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_back"
+                        ),
+                    ],
                 ]
             ),
         )
@@ -412,15 +438,16 @@ def emiko_about_callback(update, context):
         first_name = update.effective_user.first_name
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
 
     elif query.data == "emiko_admin":
@@ -458,18 +485,20 @@ def emiko_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/{SUPPORT_CHAT}"),
-                    InlineKeyboardButton(text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"http://t.me/{SUPPORT_CHANNEL}"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="🎭ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
-                 
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/{SUPPORT_CHAT}"
+                        ),
+                        InlineKeyboardButton(
+                            text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"http://t.me/{SUPPORT_CHANNEL}"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="🎭ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
+                    ],
                 ]
             ),
         )
-
 
     elif query.data == "emiko_credit":
         query.message.edit_text(
@@ -478,19 +507,23 @@ def emiko_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-               
-                 [
-                    InlineKeyboardButton(text="💕ᴏᴡɴᴇʀ ᴏғ ʙᴏᴛ sᴏᴄɪᴇᴛʏ💕", url="t.me/cl_me_logesh"),
-                 ],
-                  [
-                    InlineKeyboardButton(text="💕ʙᴏᴛs ᴜᴘᴅᴀᴛᴇ💕", url="t.me/logi_channel"),
-                 ],
-                  [
-                    InlineKeyboardButton(text="🎭ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
-                 ],
+                    [
+                        InlineKeyboardButton(
+                            text="💕ᴏᴡɴᴇʀ ᴏғ ʙᴏᴛ sᴏᴄɪᴇᴛʏ💕", url="t.me/cl_me_logesh"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="💕ʙᴏᴛs ᴜᴘᴅᴀᴛᴇ💕", url="t.me/logi_channel"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="🎭ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
+                    ],
                 ]
             ),
         )
+
 
 def Source_about_callback(update, context):
     query = update.callback_query
@@ -532,26 +565,24 @@ def Source_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="emiko_")
-                 ]
-                ]
+                [[InlineKeyboardButton(text="Go Back", callback_data="emiko_")]]
             ),
         )
     elif query.data == "source_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
+
 
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -824,9 +855,7 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.sendMessage(
-                f"@{SUPPORT_CHAT}", 
-                "👋 Hi, i'm alive.",
-                parse_mode=ParseMode.MARKDOWN
+                f"@{SUPPORT_CHAT}", "👋 Hi, i'm alive.", parse_mode=ParseMode.MARKDOWN
             )
         except Unauthorized:
             LOGGER.warning(

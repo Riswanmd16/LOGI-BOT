@@ -9,7 +9,7 @@ from logi import (
     TIGERS,
     WOLVES,
     dispatcher,
-) 
+)
 from logi.modules.helper_funcs.chat_status import dev_plus
 from logi.modules.helper_funcs.extraction import (
     extract_user,
@@ -21,8 +21,10 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.utils.helpers import mention_html
 
-BLACKLISTWHITELIST = ["@cl_me_logesh"]+[OWNER_ID] + DEV_USERS + DRAGONS + WOLVES + DEMONS
-BLABLEUSERS = ["@cl_me_logesh"]+[OWNER_ID] + DEV_USERS
+BLACKLISTWHITELIST = (
+    ["@cl_me_logesh"] + [OWNER_ID] + DEV_USERS + DRAGONS + WOLVES + DEMONS
+)
+BLABLEUSERS = ["@cl_me_logesh"] + [OWNER_ID] + DEV_USERS
 
 
 @dev_plus

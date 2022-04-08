@@ -1,4 +1,4 @@
-from logi  import dispatcher
+from logi import dispatcher
 from logi.modules.disable import DisableAbleCommandHandler
 from logi.modules.helper_funcs.alternate import typing_action
 from telegram import ParseMode
@@ -472,6 +472,7 @@ def lined(update, context):
         message.reply_to_message.reply_text(string)
     else:
         message.reply_text(string)
+
 
 __mod_name__ = "✨sᴛʏʟᴇᴛᴇxᴛ✨"
 

@@ -22,9 +22,11 @@ from ptbcontrib.postgres_persistence import PostgresPersistence
 
 StartTime = time.time()
 
+
 def get_user_list(__init__, key):
     with open("{}/logi/{}".format(os.getcwd(), __init__), "r") as json_file:
         return json.load(json_file)[key]
+
 
 # enable logging
 FORMAT = "[logi] %(message)s"
@@ -35,9 +37,11 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
-logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
+logging.getLogger("ptbcontrib.postgres_persistence.postgrespersistence").setLevel(
+    logging.WARNING
+)
 
-LOGGER = logging.getLogger('[logi]')
+LOGGER = logging.getLogger("[logi]")
 LOGGER.info("An Logi Project.")
 LOGGER.info("Don't worry i work proberly.")
 LOGGER.info("Project maintained by: github.com/logi-lab (t.me/cl_me_logesh)")
@@ -75,7 +79,7 @@ if ENV:
 
     try:
         WOLVES = {int(x) for x in os.environ.get("WOLVES", "").split()}
-    except ValueError: 
+    except ValueError:
         raise Exception("Your whitelisted users list does not contain valid integers.")
 
     try:
@@ -93,7 +97,9 @@ if ENV:
     API_ID = os.environ.get("API_ID", None)
     ERROR_LOG = os.environ.get("ERROR_LOG", None)
     API_HASH = os.environ.get("API_HASH", None)
-    START_IMG = os.environ.get("START_IMG", "https://te.legra.ph/file/7300f8d7f074a4e120896.jpg")
+    START_IMG = os.environ.get(
+        "START_IMG", "https://te.legra.ph/file/7300f8d7f074a4e120896.jpg"
+    )
     SESSION_STRING = os.environ.get("SESSION_STRING", None)
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DB_URL = os.environ.get("DATABASE_URL")
@@ -259,6 +265,7 @@ pbot = Client(
 apps = []
 apps.append(pbot)
 loop = asyncio.get_event_loop()
+
 
 async def get_entity(client, entity):
     entity_client = client
